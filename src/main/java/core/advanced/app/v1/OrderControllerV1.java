@@ -1,4 +1,4 @@
-package core.advanced.app.v1.v0;
+package core.advanced.app.v1;
 
 import core.advanced.trace.TraceStatus;
 import core.advanced.trace.adtrace.AdTraceV1;

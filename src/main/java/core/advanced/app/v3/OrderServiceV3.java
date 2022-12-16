@@ -1,0 +1,28 @@
+package core.advanced.app.v3;
+
+import core.advanced.trace.TraceId;
+import core.advanced.trace.TraceStatus;
+import core.advanced.trace.logtrace.LogTrace;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class OrderServiceV3 {
+
+    private final OrderRepositoryV3 orderRepository;
+    private final LogTrace trace;
+
+    public void orderItem(TraceId traceId, String itemId){
+
+        TraceStatus status = null;
+        try{
+            status = trace.begin("OrderService.request()");
+            orderRepository.save(status.getTraceId(), itemId);
+            trace.end(status);
+        } catch (Exception e) {
+            trace.exception(status, e);
+            throw e; // 예외를 꼭 다시 던져주어야 합니다.
+        }
+    }
+}

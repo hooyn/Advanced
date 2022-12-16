@@ -3,8 +3,6 @@ package core.advanced.trace.adtrace;
 import core.advanced.trace.TraceStatus;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class AdTraceV1Test {
 
     @Test
